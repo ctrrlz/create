@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<style>
+    html {
+  height: 100%;
+}
+img{
+    max-width: 8vw;
+    max-height: 6vw;
+    margin-top: 0.1%;
+}
+/* отобразить как другую страницу*/
+.busc{
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-wrap:wrap;
+    width: 80vw;
+    height: 90vh;
+    background-color: white;
+    border: 1px solid rgb(26, 25, 25);
+}
+.bb{
+  position:absolute;
+  bottom: 1.5%;
+  left:2%;
+  border: .5px solid rgb(188, 188, 188);
+}
+.bbb{
+position: absolute;
+bottom: 1.05%;
+left: 2%;
+border: .5px solid rgb(188, 188, 188);
+border-radius: 5px;
+}
+.card{
+display: flex;
+justify-content: space-between;
+flex-wrap:wrap;
+align-items: center;
+margin-bottom: 2%;
+position: relative;
+padding-bottom: 1.5%;
+width: 20vw;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.content{
+display: flex;
+justify-content: space-evenly;
+flex-wrap:wrap;
+width: 94vw;
+margin-top: 5vw;
+
+}
+.price{
+position: absolute;
+bottom: 0px;
+right: 2.0;
+font-weight: bold;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+
+}
+#log{
+    width: 60vw;
+    padding-left:20vw;
+    padding-right: 20vw;
+    align-items: center;
+    margin-bottom: 40vh;
+}
+#login-header {
+  display: grid;
+  margin-top: 3.0%;
+  height: 5vh;
+  margin-left: 5vh;
+}
+
+#login-error-msg-holder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+#login-error-msg {
+  width: 23%;
+  text-align: center;
+  margin: 0;
+  padding: 0.5%;
+  font-size: 1.2%;
+  font-weight: bold;
+  color: #8a0000;
+  border: 1px solid #8a0000;
+  background-color: #e58f8f;
+  opacity: 0;
+}
+
+#error-msg-second-line {
+  display: block;
+}
+
+#login-form {
+  align-self: flex-start;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+}
+
+.login-form-field::placeholder {
+  color: #3a3a3a;
+}
+.login-form-field {
+  border: none;
+  border-bottom: 0,1% solid #3a3a3a;
+  margin-bottom: 1%;
+  border-radius: 0,3%;
+  outline: none;
+  padding: 0px 0px 5px 5px;
+}
+#login-form-submit {
+  width: 100%;
+  padding: 0,7%;
+  border: none;
+  border-radius: 0,5%;
+  color: white;
+  font-weight: bold;
+  background-color: #3a3a3a;
+  
+  outline: none;
+}
+.categ{
+    position: absolute;
+    top:0.2%;
+    right:0.2%;
+   
+}
+.container {
+  display: flex;
+  margin-top: 10vh;
+  margin-left: 1vw;
+  width: 96vw;
+}
+@media screen and (max-width: 100vw) {
+    .container {
+    flex-wrap: wrap;
+  }
+  .card {
+    flex-basis: calc(50% - 2.0%);
+  }
+  .categ{flex-basis: calc(50% - 2.0%);}
+}
+@media screen and (max-width: 48.0%) {
+    .container {
+    flex-direction: column;
+  }
+  
+}
+</style>
+<body>
+    
+    <div class="categ"></div>
+    <div class="container">
+    <div class="content"></div>
+        <div id="log">
+    <h1 id="login-header">Login</h1>
+        
+        <div id="login-error-msg-holder">
+          <p id="login-error-msg">Invalid username <span id="error-msg-second-line">and/or password</span></p>
+        </div>
+        
+        <form id="login-form">
+          <input type="text" name="username" id="username-field" class="login-form-field" placeholder="Username">
+          <input type="password" name="password" id="password-field" class="login-form-field" placeholder="Password">
+          <input type="submit" value="Login" id="login-form-submit">
+        </form>
+
+
+    </div>
+    </div>
+    <script>
+let lh = document.getElementById('login-header')
+let hold= document.getElementById('login-error-msg-holder')
+let logg=document.getElementById('log')
+const loginForm = document.getElementById("login-form");
+const loginButton = document.getElementById("login-form-submit");
+const loginErrorMsg = document.getElementById("login-error-msg");
+
+loginButton.addEventListener("click", (e) => {
+    e.preventDefault();
+    const username = loginForm.username.value;
+   const password = loginForm.password.value;
+    if(e.value ==='')e.value = window.sessionStorage.getItem(e.username, e.value);
+    if(e.value ==='')e.value = window.sessionStorage.getItem(e.username, e.value);
+    if (username === "user" && password === "22") {
+       logg.remove();
+
+
+
+
+
+
+
+
+
+/* регистрация
+document.getElementById('registrationForm').addEventListener('submit', function(event){
+  event.preventDefault();
+  var username= document.getElementById('username').value;
+  var password=document.getElementById('password').value;
+  if(username === "" && password === "") {
+    alert('заполните, пожалуйста, поля');
+    return;
+}
+var users = JSON.parse(localStorage.getItem('users'));
+var existingUser = users.find(function(user){
+  return user.username ===username;
+});
+if(existingUser){
+  alert('это имя уже занято');
+  return;
+}
+users.push({
+  username: username,
+  password: password
+})
+localStorage.setItem('users', JSON.stringify(users))
+alert('регистрация завершена')});
+*/
+let product = anyFunc();
+
+let button1 = document.createElement('button');
+   button1.innerText = "men's clothing";
+   button1.classList.add('btn')
+   let a = document.querySelector('.categ');
+    a.appendChild(button1);
+   button1.addEventListener('click', () => anyFunc(link = "category/men's clothing"))
+let button2 = document.createElement('button');
+   button2.innerText = "women's clothing";
+   button2.classList.add('btn')
+    a.appendChild(button2);
+   button2.addEventListener('click', () => anyFunc(link = "category/women's clothing"))
+let button3 = document.createElement('button');
+   button3.innerText = "jewelery";
+   button3.classList.add('btn')
+    a.appendChild(button3);
+   button3.addEventListener('click', () => anyFunc(link = 'category/jewelery'))
+let button4 = document.createElement('button');
+   button4.innerText = "electronics";
+   button4.classList.add('btn')
+    a.appendChild(button4);
+   button4.addEventListener('click', () => anyFunc(link = 'category/electronics'))
+   
+let button0 = document.createElement('button');
+button0.innerText = "корзина";
+   button0.classList.add('btn')
+   a.appendChild(button0)
+   button0.addEventListener('click', () => Busc())
+        
+    } else {
+       // loginErrorMsg.style.opacity = 1;
+    }
+})
+
+function anyFunc(link = ''){
+    fetch("https://fakestoreapi.com/products/" + link)
+            .then(res=>res.json())
+            .then(json => {
+                console.log(json);
+                product = json;
+                return json;
+            }
+           )
+           .then(data => {
+            createCards(data);
+            return data;
+           });
+}
+//другая страница(без использования добавления как элемента)
+let buscet= document.createElement('div');
+    buscet.classList.add('busc')
+//замена на переадресацию
+function Busc(){
+      content.appendChild(buscet)
+}
+
+let content = document.getElementsByClassName('content')[0];
+function createCards(arr){
+    content.innerHTML = ''; 
+    for(let item of arr){
+        let container = document.createElement('div');
+        container.classList.add('card');
+        let img = document.createElement('img');
+        img.src = item.image;
+        let bb = document.createElement('button');
+        bb.classList.add('bb');
+        bb.innerText = 'add';
+        let block = document.createElement('div');
+        block.classList.add('card-body');
+        let header = document.createElement('h5');
+        header.innerText = item.category;
+        let header2 = document.createElement('h5');
+        header.innerText = item.title;
+        let par = document.createElement('p');
+        par.innerText = item.description;
+        let price = document.createElement('p');
+        price.innerText = item.price;
+        price.classList.add('price');
+        let bbb = document.createElement('button');
+        bbb.classList.add('bbb');
+        bbb.innerText = 'remove';
+        container.append(img);
+        content.append(container);
+        container.append(block);
+        block.append(header2);
+        block.append(header);
+        block.append(par);
+        block.append(price);
+        block.append(bb)
+    content.append(container);
+    bb.addEventListener('click', () => Add())
+    bbb.addEventListener('click', () => Remove())
+    function Add(){
+     //смена(возможно)
+      buscet.appendChild(container)
+      bb.remove();
+      block.append(bbb);
+    }
+    function Remove(){
+      container.remove();
+    }
+    }
+    }
+    
+    </script>
+</body>
+</html>
